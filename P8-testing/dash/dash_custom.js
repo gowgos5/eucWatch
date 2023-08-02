@@ -391,8 +391,17 @@ touchHandler[0]=function(e,x,y){
 		this.timeout();
 		break;
     case 1: //slide down event
+		// headlight
+		buzzer.nav([30,50,30]);
+		euc.dash.opt.lght.HL=3-euc.dash.opt.lght.HL;
+		euc.wri("setLights",euc.dash.opt.lght.HL);
+		this.timeout();
         break;
     case 2: //slide up event
+		// led
+		buzzer.nav([30,50,30]);
+		euc.dash.opt.lght.ride=1-euc.dash.lght.ride;
+		euc.wri("setLedRideOnOff",euc.dash.lght.ride);
 		this.timeout();
 		break;
     case 3: //slide left event
