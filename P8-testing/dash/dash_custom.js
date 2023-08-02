@@ -378,6 +378,16 @@ face[1] = {
 touchHandler[0]=function(e,x,y){
 	switch (e) {
 	case 5: //tap event	
+		if (53<y&&y<173&&40<x&&x<200){//speed
+			buzzer.nav([30,50,30]);
+			// TODO ew.def.off[face.appCurr]
+		}else if (190<y){//mileage/time
+			buzzer.nav([30,50,30]);
+			if (euc.dash.alrt.warn.txt) {euc.dash.alrt.warn.txt=0;face[0].almT=-1;face[0].trpL=-1;return}
+			if (ew.def.dash.clck==undefined) ew.def.dash.clck=0;
+			ew.def.dash.clck=1-ew.def.dash.clck;
+ 			face[0].trpL=-1;face[0].barF();
+		}
 		this.timeout();
 		break;
     case 1: //slide down event
