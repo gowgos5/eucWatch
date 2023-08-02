@@ -378,56 +378,19 @@ face[1] = {
 touchHandler[0]=function(e,x,y){
 	switch (e) {
 	case 5: //tap event	
-		if (120<x&&y<55){//batery percentage/voltage
-			if (ew.def.dash.bat==undefined || 1 < ew.def.dash.bat) ew.def.dash.bat=0; else ew.def.dash.bat++;
-			face[0].bat=-1;face[0].volt=-1;//face[0].batL.fill(1,0,1);
-			buzzer.nav([30,50,30]);
-		}else if (x<120&&y<55){//tmp/amp
-			if (ew.def.dash.amp==undefined) ew.def.dash.amp=0;
-			ew.def.dash.amp=1-ew.def.dash.amp;
- 			face[0].tmp=-1;face[0].amp=-1;//face[0].ampL.fill(1,0,1);
-			buzzer.nav([30,50,30]);
-		}else if (190<y){//mileage/time
-			buzzer.nav([30,50,30]);
-			if (euc.dash.alrt.warn.txt) {euc.dash.alrt.warn.txt=0;face[0].almT=-1;face[0].trpL=-1;return}
-			if (ew.def.dash.clck==undefined) ew.def.dash.clck=0;
-			ew.def.dash.clck=1-ew.def.dash.clck;
- 			face[0].trpL=-1;face[0].barF();
-		}else if (110<y&&y<195&&x<55&&euc.dash.info.get.makr=="Begode"){
-			buzzer.nav([30,50,30]);
-			face.go("dashBegodeAdvLimits",0);
-			return;
-		}else
-			buzzer.nav(40);
 		this.timeout();
 		break;
     case 1: //slide down event
-		if (ew.def.dash.face+1>=ew.is.dash.length) 
-			ew.def.dash.face=0; 
-		else 
-			ew.def.dash.face++;
-		face.go(ew.is.dash[ew.def.dash.face],0);
-		return;
+        break;
     case 2: //slide up event
-		if (y>160&&x<50) {
-			if (w.gfx.bri.lv!==7) {this.bri=w.gfx.bri.lv;w.gfx.bri.set(7);}
-			else w.gfx.bri.set(this.bri);
-			buzzer.nav([30,50,30]);
-		}else if (Boolean(require("Storage").read("settings"))) {
-			face.go("settings",0);
-			return;
-		}
 		this.timeout();
 		break;
     case 3: //slide left event
-		(euc.state=="READY")?face.go('dash'+require("Storage").readJSON("dash.json",1)['slot'+require("Storage").readJSON("dash.json",1).slot+'Maker'],0):(euc.state=="OFF")?face.go("dashGarage",0):buzzer.nav(40);
 		return;
     case 4: //slide right event (back action)
-		face.go("clock",0);
 		return;
     case 12: //touch and hold(long press) event
 		this.timeout();
-		buzzer.nav(40);
 		break;
     }
 };
