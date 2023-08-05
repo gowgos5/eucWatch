@@ -91,7 +91,19 @@
 			{"name":"dashScan","url":"../../Magic-testing/dash/dashScan.js"},
 			{"name":"C:dashOff","url":"../../Magic-testing/dash/dashOff.js"}
 		]
-	}, 
+	},
+	{ "id": "Dashboard Custom",
+		"name": "EUC custom Dashboard",
+		"icon": "../../P8-testing/dash/icon.png",
+		"version":"1.00",
+		"description": "EUC custom",
+		"tags": "euc",
+		"needsFeatures":["V1"],
+		"readme": "README.md",
+		"storage": [
+			{"name":"dash_custom","url":"../../P8-testing/dash/dash_custom.js"}
+		]
+	}, 	
 	{ "id": "dashKingsong",
 		"name": "Kingsong Settings",
 		"icon": "../../Magic-testing/dashKingsong/icon.png",
